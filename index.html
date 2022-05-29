@@ -1,0 +1,244 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="shortcut icon"
+    href="https://github.com/Sanket2004/Music-Player/blob/main/images/music%20logo%20(1).png?raw=true"
+    type="image/gif">
+  <link rel="icon" href="https://github.com/Sanket2004/Music-Player/blob/main/images/music%20logo%20(1).png?raw=true"
+    type="image/gif">
+  <meta name="description"
+    content="A Music Playable Music Library" />
+  <meta property="og:title" content="Music Library" />
+  <meta property="og:url" content="https://github.com/Sanket2004/Music-Player/blob/main/images/music%20logo%20(1).png?raw=true" />
+  <meta property="og:description"
+    content="A Music Playable Music Library" />
+  <meta property="og:image:secure_url"
+    content="https://github.com/Sanket2004/Music-Player/blob/main/images/music%20logo%20(1).png?raw=true" />
+  <meta property="og:image"
+    content="https://github.com/Sanket2004/Music-Player/blob/main/images/music%20logo%20(1).png?raw=true" />
+  <meta property="profile:username" content="sanket2004" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Sanket Banerjee" />
+  <meta name="twitter:image"
+    content="https://github.com/Sanket2004/Music-Player/blob/main/images/music%20logo%20(1).png?raw=true" />
+  <meta name="twitter:url" content="https://sanket2004.github.io/Music-Player/" />
+
+
+    <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2285%22>🎵</text></svg>" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Music Library | Sanket Banerjee</title>
+    <style type="text/tailwindcss">
+        @font-face {
+  font-family: 'Product Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+}
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+    }
+
+    body
+    {
+        font-family: Product Sans;
+    }
+
+    .shimmer {
+
+  color: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(
+    to right,
+    #ed8080 0%,
+    #2a77d6 16%,
+    #5eb524 32%,
+    #eacd25 48%,
+    #ed8080 64%,
+    #2a77d6 80%,
+    #5eb524 100%
+  );
+
+  background-size: 300% 300%;
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-color: #222;
+  
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+
+  animation: shimmer infinite 3s linear;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: top left;
+  }
+  100% {
+    background-position: top right;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+    <div class="lg:content-auto">
+        <!-- ... -->
+        <!-- component -->
+        <div class="bg-white">
+            <div class="container mx-auto px-6 py-16">
+                <div class="mx-auto sm:w-6/12 lg:w-5/12 xl:w-[30%]">
+                    <div>
+                        <h1 class="text-3xl">Your Library 🎵</h1>
+                        <p class="mt-2 text-gray-600 shimmer">Listen to your favorite music today !</p>
+                    </div>
+
+                    <div class="mt-4">
+                        <div class="relative flex flex-col justify-end overflow-hidden rounded-b-xl pt-6">
+                            <div
+                                class="group relative flex cursor-pointer justify-between rounded-xl bg-amber-200 before:absolute before:inset-y-0 before:right-0 before:w-1/2 before:rounded-r-xl before:bg-gradient-to-r before:from-transparent before:to-amber-600 before:opacity-0 before:transition before:duration-500 hover:before:opacity-100">
+                                <div class="relative  space-y-1 p-4">
+                                    <h4 class="text-lg text-amber-900">Señorita</h4>
+                                    <div class="relative h-6 text-amber-800 text-sm">
+                                        <span
+                                            class="transition duration-300 group-hover:invisible group-hover:opacity-0">Camila Cabello</span>
+                                        <a href="./music/señorita/señorita.html"
+                                            class="flex items-center gap-2 invisible absolute left-0 top-0 translate-y-3 transition duration-300 group-hover:visible group-hover:translate-y-0">
+                                            <span>Listen now </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="h-4 w-4 -translate-x-4 transition duration-300 group-hover:translate-x-0"
+                                                viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd"
+                                                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                <img class="absolute bottom-0 right-3 w-[8rem] transition duration-300 group-hover:scale-[1.4]"
+                                    src="https://github.com/Sanket2004/Music-Player/blob/main/images/Camila-Cabello.png?raw=true"
+                                    alt="Camila Cabello" />
+                            </div>
+                        </div>
+                        <div class="relative -mr-6 flex flex-col justify-end overflow-hidden rounded-b-xl pt-6 pr-6">
+                            <div
+                                class="group relative flex cursor-pointer justify-between rounded-xl bg-orange-200 before:absolute before:inset-y-0 before:right-0 before:w-1/2 before:rounded-r-xl before:bg-gradient-to-r before:from-transparent before:to-orange-600 before:opacity-0 before:transition before:duration-500 hover:before:opacity-100">
+                                <div class="relative space-y-1 p-4">
+                                    <h4 class="text-lg text-orange-900">Taki Taki</h4>
+                                    <div class="relative h-6 text-orange-800 text-sm">
+                                        <span
+                                            class="transition duration-300 group-hover:invisible group-hover:opacity-0">Selena
+                                            Gomez</span>
+                                        <a href="./music/takitaki/takitaki.html"
+                                            class="w-max flex items-center gap-3 invisible absolute left-0 top-0 translate-y-3 transition duration-300 group-hover:visible group-hover:translate-y-0">
+                                            <span>Listen now </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="h-4 w-4 -translate-x-4 transition duration-300 group-hover:translate-x-0"
+                                                viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd"
+                                                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                <img class="absolute -bottom-1 right-0 w-[6rem] transition duration-300 group-hover:scale-[1.4]"
+                                    src="https://raw.githubusercontent.com/Meschacirung/Tailus-website/main/public/images/singers/Selena-Gomez.png"
+                                    alt="" />
+                            </div>
+                        </div>
+                        <div class="relative flex flex-col justify-end overflow-hidden rounded-b-xl pt-6">
+                            <div
+                                class="group relative flex cursor-pointer justify-between rounded-xl bg-rose-200 before:absolute before:inset-y-0 before:right-0 before:w-1/2 before:rounded-r-xl before:bg-gradient-to-r before:from-transparent before:to-rose-600 before:opacity-0 before:transition before:duration-500 hover:before:opacity-100">
+                                <div class="relative space-y-1 p-4">
+                                    <h4 class="text-lg text-rose-900">Baby</h4>
+                                    <div class="relative h-6 text-rose-800 text-sm">
+                                        <span
+                                            class="transition duration-300 group-hover:invisible group-hover:opacity-0">Justin
+                                            Bieber</span>
+                                        <a href="./music/baby/baby.html"
+                                            class="w-max flex items-center gap-3 invisible absolute left-0 top-0 translate-y-3 transition duration-300 group-hover:visible group-hover:translate-y-0">
+                                            <span>Listen now </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="h-4 w-4 -translate-x-4 transition duration-300 group-hover:translate-x-0"
+                                                viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd"
+                                                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                <img class="absolute bottom-0 right-6 w-[6rem] transition duration-300 group-hover:scale-[1.4]"
+                                    src="https://raw.githubusercontent.com/Meschacirung/Tailus-website/main/public/images/singers/Justin-Bieber.png"
+                                    alt="" />
+                            </div>
+                        </div>
+                        <div class="relative -mr-6 flex flex-col justify-end overflow-hidden rounded-b-xl pt-6 pr-6">
+                            <div
+                                class="group relative flex cursor-pointer justify-between rounded-xl bg-fuchsia-200 before:absolute before:inset-y-0 before:right-0 before:w-1/2 before:rounded-r-xl before:bg-gradient-to-r before:from-transparent before:to-fuchsia-600 before:opacity-0 before:transition before:duration-500 hover:before:opacity-100">
+                                <div class="relative w-7/12 space-y-1 p-4">
+                                    <h4 class="text-lg text-fuchsia-900">Save Your Tears</h4>
+                                    <div class="relative h-6 text-fuchsia-800 text-sm">
+                                        <span
+                                            class="transition duration-300 group-hover:invisible group-hover:opacity-0">Ariana
+                                            Grande</span>
+                                        <a href="./music/SaveYourTears/SaveYourTears.html"
+                                            class="w-max flex items-center gap-3 invisible absolute left-0 top-0 translate-y-3 transition duration-300 group-hover:visible group-hover:translate-y-0">
+                                            <span>Listen now </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="h-4 w-4 -translate-x-4 transition duration-300 group-hover:translate-x-0"
+                                                viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd"
+                                                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                <img class="absolute -bottom-1 right-0 w-[6rem] transition duration-300 group-hover:scale-[1.4]"
+                                    src="https://raw.githubusercontent.com/Meschacirung/Tailus-website/main/public/images/singers/Ariana-Grande.png"
+                                    alt="" />
+                            </div>
+                        </div>
+                        <div class="relative flex flex-col justify-end overflow-hidden rounded-b-xl pt-6">
+                            <div
+                                class="group relative flex cursor-pointer justify-between rounded-xl bg-blue-200 before:absolute before:inset-y-0 before:right-0 before:w-1/2 before:rounded-r-xl before:bg-gradient-to-r before:from-transparent before:to-blue-600 before:opacity-0 before:transition before:duration-500 hover:before:opacity-100">
+                                <div class="relative space-y-1 p-4">
+                                    <h4 class="text-xl text-blue-900">Bad Guy</h4>
+                                    <div class="relative h-6 text-blue-800 text-sm">
+                                        <span
+                                            class="transition duration-300 group-hover:invisible group-hover:opacity-0">Billie Eilish</span>
+                                        <a href="./music/badguy/badguy.html"
+                                            class="w-max flex items-center gap-3 invisible absolute left-0 top-0 translate-y-3 transition duration-300 group-hover:visible group-hover:translate-y-0">
+                                            <span>Listen now </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="h-4 w-4 -translate-x-4 transition duration-300 group-hover:translate-x-0"
+                                                viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd"
+                                                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                <img class="absolute bottom-0 right-0 w-[8rem] transition duration-300 group-hover:scale-[1.4]"
+                                    src="https://github.com/Sanket2004/Music-Player/blob/main/images/billie-eilish-has-been-real-about-mental-health-5-times-take-a-look-2-removebg-preview.png?raw=true"
+                                    alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
