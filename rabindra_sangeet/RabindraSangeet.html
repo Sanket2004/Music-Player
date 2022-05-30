@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./RabindraSangeet.css">
+    <link rel="shortcut icon" href="https://nationalpoetryday.co.uk/wp-content/uploads/2020/06/Rabindranath-Tagore-Swoosh.png">
+    <title>Rabindra Sangeet | Music Library</title>
+</head>
+<body>
+    <div class="section">
+        <div class="section__background">
+          <img id="backgroundImage" class="section__background-image" src="https://lastfm.freetls.fastly.net/i/u/ar0/f4c6146a4b4e433492259a92e43ad264.jpg" alt="">
+        </div>
+        <div class="music-card__wrapper">
+          <div class="music-card">
+            <div class="music-card__content">
+              <img class="music-image" src="https://lastfm.freetls.fastly.net/i/u/ar0/f4c6146a4b4e433492259a92e43ad264.jpg" alt="">
+              <div class="music-info">
+                <h2 class="music-name">Mor Bhabonare Ki Haway Matalo</h2>
+                <p class="music-artist">Hemanta Kumar Mukhopadhyay</p>
+              </div>
+              <audio src="https://firebasestorage.googleapis.com/v0/b/music-dad13.appspot.com/o/Mor-Bhabonare-Ki-Haoay-Matalo-Hemanta-Kumar-Mukhopadhyay.m4a?alt=media&token=b188ec5a-0be9-4360-b9c0-efd76e8e8aaf"></audio>
+              <div class="music-progress">
+                <div id="progress-bar" class="music-progress-bar"></div>
+                <div class="music-progress__time">
+                  <span class="music-progress__time-item music-current-time">00:00</span>
+                  <span class="music-progress__time-item music-duration-time">00:00</span>
+                </div>
+              </div>
+              <div class="music-controls">
+                <div id="prev" class="music-controls-item">
+                  <i class="fas fa-backward music-controls-item--icon"><</i>
+                </div>
+      
+                <div id="play" class="music-controls-item">
+                  <i class="fa fa-play music-controls-item--icon play-icon">O</i>
+                  <div class="play-icon-background"></div>
+                </div>
+      
+                <div id="next" class="music-controls-item">
+                  <i class="fas fa-forward music-controls-item--icon">></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+          const next = document.querySelector('#next');
+        const play = document.querySelector('#play');
+        const prev = document.querySelector('#prev');
+        const progressBar = document.querySelector('#progress-bar');
+        const musicTitle = document.querySelector('.music-name');
+        const musicCard = document.querySelector('.music-card');
+        const musicArtist = document.querySelector('.music-artist');
+        const musicCover = document.querySelector('.music-image');
+        const musicCurrentTime = document.querySelector('.music-current-time');
+        const musicDurationTime = document.querySelector('.music-duration-time');
+        const backgroundImage = document.querySelector('#backgroundImage');
+        const music = document.querySelector('audio');
+        const progressZone = document.querySelector('.music-progress');
+
+        let isPlaying = false;
+        // default select first music
+        let selectedMusic = 1;
+
+        play.addEventListener('click', () => {
+            isPlaying ? pauseMusic() : playMusic()
+        });
+
+        const playList = [{
+            artist: 'Hemanta Kumar Mukhopadhyay',
+            cover: 'https://lastfm.freetls.fastly.net/i/u/ar0/f4c6146a4b4e433492259a92e43ad264.jpg',
+            musicName: 'Mor Bhabonare Ki Haway Matalo',
+            musicPath: `https://firebasestorage.googleapis.com/v0/b/music-dad13.appspot.com/o/Mor-Bhabonare-Ki-Haoay-Matalo-Hemanta-Kumar-Mukhopadhyay.m4a?alt=media&token=b188ec5a-0be9-4360-b9c0-efd76e8e8aaf`
+        },
+        {
+            artist: 'Hemanta Kumar Mukhopadhyay',
+            cover: 'https://lastfm.freetls.fastly.net/i/u/ar0/f4c6146a4b4e433492259a92e43ad264.jpg',
+            musicName: 'Ami Tomay Joto Suniyechilam Gaan',
+            musicPath: `https://firebasestorage.googleapis.com/v0/b/music-dad13.appspot.com/o/Ami-Tomay-Jato-Shuniyechhilem-Gaan-Hemanta-Kumar-Mukhopadhyay.m4a?alt=media&token=c5780fab-6233-40da-b7d6-33b6bafd8013`
+        },
+        {
+            artist: 'Hemanta Kumar Mukhopadhyay',
+            cover: 'https://a10.gaanacdn.com/gn_img/albums/NOXWVRgWkq/OXWVN7X9Wk/size_l.jpg',
+            musicName: 'Jodi Tare Nai Chini',
+            musicPath: `https://firebasestorage.googleapis.com/v0/b/music-dad13.appspot.com/o/Jodi-Tare-Nai-Chini-Go-Hemanta-Mukherjee.m4a?alt=media&token=cce1ea40-5671-4c8e-beaf-799e4f730b81`
+        },
+        {
+            artist: 'Hemanta Kumar Mukhopadhyay',
+            cover: 'https://i.scdn.co/image/ab67616d0000b273f73fdf29b6a84f5b072831d7',
+            musicName: 'Ki Gabo Ami Ki Sunabo',
+            musicPath: `https://firebasestorage.googleapis.com/v0/b/music-dad13.appspot.com/o/Ki-Gabo-Ami-Ki-Shunabo-.m4a?alt=media&token=06a89db6-07b8-4972-82b9-e637ec424f31`
+        },
+        {
+            artist: 'Hemanta Kumar Mukhopadhyay',
+            cover: 'https://i.scdn.co/image/ab67616d0000b2731ce3d9148defaef3838c7dff',
+            musicName: 'Sawan Gagane Ghor Ghanaghata',
+            musicPath: `https://firebasestorage.googleapis.com/v0/b/music-dad13.appspot.com/o/Sawan-Gagane-Ghor-Ghanaghata-Hemant-Kumar.m4a?alt=media&token=e8af0674-1ba0-45b0-bd95-ebe7435684ac`
+        },
+        {
+            artist: 'Hemanta Kumar Mukhopadhyay',
+            cover: 'https://lastfm.freetls.fastly.net/i/u/ar0/cf4f05d36d2b45eb95a5109c3609185e.jpg',
+            musicName: 'Aguner Parasmoni',
+            musicPath: `https://firebasestorage.googleapis.com/v0/b/music-dad13.appspot.com/o/Aguner-Parashmoni-Hemanta-Mukherjee-Suchitra-Mitra.m4a?alt=media&token=dba09768-2e05-4587-9b29-4036d33fd2bd`
+        },
+        {
+            artist: 'Indrani Sen',
+            cover: 'https://i.scdn.co/image/ab67616d00001e020e7cc0d695464fcbb621f8fb',
+            musicName: 'Aanandhara Bahiche Bhubane',
+            musicPath: `https://firebasestorage.googleapis.com/v0/b/music-dad13.appspot.com/o/Anandadhara-Bahichhe-Bhubane-Indrani-Sen.m4a?alt=media&token=fa57b2dc-8e7a-4289-8d15-c53b8009c4b8`
+        },
+        {
+            artist: 'Subinoy Roy',
+            cover: 'https://i.scdn.co/image/ab67616d0000b27334d7ee7e176ebfc63f7d9098',
+            musicName: 'E Ki Labanye Purna Prana',
+            musicPath: `https://firebasestorage.googleapis.com/v0/b/music-dad13.appspot.com/o/E-Ki-Labanye-Purna-Prana-Subinoy-Roy.m4a?alt=media&token=9228cb71-6f67-425d-adb7-9fe14f593882`
+        },
+        {
+            artist: 'Bibi Komalpreet Kaur England Wale',
+            cover: 'https://dns2.vippendu.com/thumb/10398496.jpg',
+            musicName: 'Gram Chara Oi',
+            musicPath: `https://firebasestorage.googleapis.com/v0/b/music-dad13.appspot.com/o/Gram-Chhara-Oi-Ranga-Matir-Poth-Bibi-Komalpreet-Kaur-England-Wale.m4a?alt=media&token=303d2698-123b-481a-bee7-b1a6f87fdf97`
+        },
+        {
+            artist: 'Hemanta Kumar Mukhopadhyay',
+            cover: 'https://a10.gaanacdn.com/images/albums/22/65322/crop_480x480_65322.jpg',
+            musicName: 'Je Raate Mor Duarguli',
+            musicPath: `https://firebasestorage.googleapis.com/v0/b/music-dad13.appspot.com/o/Je-Raate-Mor-Duarguli-Hemanta-Kumar-Mukhopadhyay.m4a?alt=media&token=359aaab7-84dd-43c1-87f1-28b708d293a5`
+        },
+        {
+            artist: 'Subir Sen & Sailen Das',
+            cover: 'https://is1-ssl.mzstatic.com/image/thumb/Music1/v4/80/04/15/8004156d-06f9-59f1-4ea3-94999b746a9c/cover.jpg/400x400cc.jpg',
+            musicName: 'Kharabayu Boy Bege',
+            musicPath: `https://firebasestorage.googleapis.com/v0/b/music-dad13.appspot.com/o/Kharabayu-Boy-Bege-Rabindranath-Tagore.m4a?alt=media&token=e9e2bb3c-7216-4a9f-94f0-3f5a99b0c823`
+        },
+        {
+            artist: 'Hemanta Kumar Mukhopadhyay',
+            cover: 'https://lastfm.freetls.fastly.net/i/u/ar0/cf4f05d36d2b45eb95a5109c3609185e.jpg',
+            musicName: 'Aguner Parasmoni',
+            musicPath: `https://firebasestorage.googleapis.com/v0/b/music-dad13.appspot.com/o/Aguner-Parashmoni-Hemanta-Mukherjee-Suchitra-Mitra.m4a?alt=media&token=dba09768-2e05-4587-9b29-4036d33fd2bd`
+        }]
+
+        const playMusic = () => {
+            music.play();
+            document.querySelector('.play-icon').classList.replace('fa-play', 'fa-pause')
+            isPlaying = true;
+            fadeInCover();
+            musicCard.classList.add('middle-weight');
+            setTimeout(() => {
+                musicCard.classList.remove('middle-weight');
+            }, 200)
+        }
+
+        const pauseMusic = () => {
+            music.pause();
+            document.querySelector('.play-icon').classList.replace('fa-pause', 'fa-play')
+            isPlaying = false;
+            fadeInCover();
+            musicCard.classList.add('middle-weight');
+            setTimeout(() => {
+                musicCard.classList.remove('middle-weight');
+            }, 200)
+        }
+
+        const nextMusic = () => {
+            selectedMusic = (selectedMusic + 1) % playList.length
+            loadMusic(playList[selectedMusic]);
+            music.duration = 0;
+            if (isPlaying) {
+                music.play()
+            }
+            musicCard.classList.add('right-weight');
+            progressBar.style.width = `0%`
+            setTimeout(() => {
+                musicCard.classList.remove('right-weight');
+            }, 200)
+        }
+
+        const prevMusic = () => {
+            selectedMusic = (selectedMusic - 1 + playList.length) % playList.length
+            loadMusic(playList[selectedMusic]);
+            if (isPlaying) {
+                music.play()
+            }
+            musicCard.classList.add('left-weight');
+            progressBar.style.width = `0%`
+            setTimeout(() => {
+                musicCard.classList.remove('left-weight');
+            }, 200)
+        }
+
+        const loadMusic = (playList) => {
+            musicArtist.textContent = playList.artist;
+            musicTitle.textContent = playList.musicName;
+            music.src = playList.musicPath;
+            musicCover.src = `${playList.cover}`;
+            backgroundImage.src = `${playList.cover}`;
+            backgroundImage.animate([{
+                opacity: 0,
+            }, {
+                opacity: 1,
+            }], {
+                duration: 400,
+            });
+            fadeInCover();
+        }
+
+        const fadeInCover = () => {
+            musicCover.classList.add('animate')
+            setTimeout(() => {
+                musicCover.classList.remove('animate')
+            }, 300)
+        }
+
+        // Update progress
+        const updateProgress = (e) => {
+            const {
+                duration,
+                currentTime
+            } = e.srcElement;
+            const progressPercent = (currentTime / duration) * 100
+            progressBar.style.width = `${progressPercent}%`
+
+            if (progressPercent == 100) {
+                setTimeout(() => {
+                    nextMusic()
+                }, 500);
+            }
+        }
+
+        // Set progress
+        function setProgress(e) {
+            const width = this.clientWidth;
+            const setPoint = e.offsetX;
+            const duration = music.duration;
+            music.currentTime = (setPoint / width) * duration;
+        }
+
+        // Set time area
+        const setMusicTime = (e) => {
+            const {
+                duration,
+                currentTime
+            } = e.srcElement;
+            calcSongTime(duration, musicDurationTime);
+            calcSongTime(currentTime, musicCurrentTime);
+        }
+
+        const calcSongTime = (time, selectTime) => {
+            time = Number(time);
+            const m = Math.floor(time % 3600 / 60);
+            const s = Math.floor(time % 3600 % 60);
+            if (m < 10) {
+                minute = "0" + m;
+            } else minute = m
+            if (s < 10) {
+                second = "0" + s;
+            } else second = s
+
+            return selectTime.textContent = `${minute}:${second}`;
+        }
+
+
+
+        next.addEventListener('click', nextMusic);
+        prev.addEventListener('click', prevMusic);
+        music.addEventListener('timeupdate', updateProgress);
+        music.addEventListener('timeupdate', setMusicTime);
+        progressZone.addEventListener('click', setProgress)
+
+        function cardAnimate(e) {
+            this.querySelectorAll('.music-card').forEach(function(boxMove) {
+                const x = -((window.innerWidth) / 3 - e.pageX) / 90
+                const y = ((window.innerHeight) / 3 - e.pageY) / 30
+                boxMove.style.transform = "rotateY(" + x + "deg) rotateX(" + y + "deg)"
+            });
+        }
+      </script>
+</body>
+</html>

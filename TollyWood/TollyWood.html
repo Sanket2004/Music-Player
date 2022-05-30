@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./TollyWood.css">
+    <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2285%22>🎶</text></svg>" type="image/x-icon">
+    <title>TollyWood Hits | Music Library</title>
+</head>
+<body>
+    <div class="section">
+        <div class="section__background">
+          <img id="backgroundImage" class="section__background-image" src="https://c.saavncdn.com/795/Hemlock-Society-Bengali-2012-20210210162335-500x500.jpg" alt="">
+        </div>
+        <div class="music-card__wrapper">
+          <div class="music-card">
+            <div class="music-card__content">
+              <img class="music-image" src="https://c.saavncdn.com/795/Hemlock-Society-Bengali-2012-20210210162335-500x500.jpg" alt="">
+              <div class="music-info">
+                <h2 class="music-name">Ekhon Onek Raat</h2>
+                <p class="music-artist">Anupam Roy</p>
+              </div>
+              <audio src="https://firebasestorage.googleapis.com/v0/b/music-dad13.appspot.com/o/Anupam%20Roy%20-%20Ekhon%20Onek%20Raat%20From%20Hemlock%20Society.mp3?alt=media&token=996e0b76-4ee3-4b23-ba8c-31feb8c9283d"></audio>
+              <div class="music-progress">
+                <div id="progress-bar" class="music-progress-bar"></div>
+                <div class="music-progress__time">
+                  <span class="music-progress__time-item music-current-time">00:00</span>
+                  <span class="music-progress__time-item music-duration-time">00:00</span>
+                </div>
+              </div>
+              <div class="music-controls">
+                <div id="prev" class="music-controls-item">
+                  <i class="fas fa-backward music-controls-item--icon"><</i>
+                </div>
+      
+                <div id="play" class="music-controls-item">
+                  <i class="fa fa-play music-controls-item--icon play-icon">O</i>
+                  <div class="play-icon-background"></div>
+                </div>
+      
+                <div id="next" class="music-controls-item">
+                  <i class="fas fa-forward music-controls-item--icon">></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+          const next = document.querySelector('#next');
+        const play = document.querySelector('#play');
+        const prev = document.querySelector('#prev');
+        const progressBar = document.querySelector('#progress-bar');
+        const musicTitle = document.querySelector('.music-name');
+        const musicCard = document.querySelector('.music-card');
+        const musicArtist = document.querySelector('.music-artist');
+        const musicCover = document.querySelector('.music-image');
+        const musicCurrentTime = document.querySelector('.music-current-time');
+        const musicDurationTime = document.querySelector('.music-duration-time');
+        const backgroundImage = document.querySelector('#backgroundImage');
+        const music = document.querySelector('audio');
+        const progressZone = document.querySelector('.music-progress');
+
+        let isPlaying = false;
+        // default select first music
+        let selectedMusic = 1;
+
+        play.addEventListener('click', () => {
+            isPlaying ? pauseMusic() : playMusic()
+        });
+
+        const playList = [{
+            artist: 'Anupam Roy',
+            cover: 'https://i.scdn.co/image/ab67616d0000b2739e3f65578ec384aab5a8465b',
+            musicName: 'Ghawrbaari',
+            musicPath: `https://firebasestorage.googleapis.com/v0/b/music-dad13.appspot.com/o/Anupam%20Roy%20-%20Ghawrbaari.mp3?alt=media&token=529295db-6833-4105-8b9d-22bc8ba85a64`
+        },
+        {
+            artist: 'Anupam Roy',
+            cover: 'https://i.scdn.co/image/ab67616d0000b273a3ed1e2f8c840eb4e2ba9abe',
+            musicName: 'Agomonir Gaan',
+            musicPath: `https://firebasestorage.googleapis.com/v0/b/music-dad13.appspot.com/o/Anupam%20Roy%20-%20Agomonir%20Gaan.mp3?alt=media&token=483b44d6-5b94-401c-b5f5-a6c7daad62d5`
+        },
+        {
+            artist: 'Anupam Roy',
+            cover: 'https://c-fa.cdn.smule.com/rs-s83/arr/02/68/694cb750-c9bc-4c03-8ee1-6d57342eb092.jpg',
+            musicName: 'Bariye Dao',
+            musicPath: `https://firebasestorage.googleapis.com/v0/b/music-dad13.appspot.com/o/Anupam%20Roy%20-%20Barie%20Dao.mp3?alt=media&token=14676b48-0361-45cb-9c41-b020a1098186`
+        },
+        {
+            artist: 'Anupam Roy & nachiketa Chakraborty',
+            cover: 'https://c.saavncdn.com/472/Zulfiqar-Bengali-2016-20210125155108-500x500.jpg',
+            musicName: 'Ek Purono Masjide',
+            musicPath: `https://firebasestorage.googleapis.com/v0/b/music-dad13.appspot.com/o/Anupam%20Roy%20-%20Ek%20Purono%20Masjide.mp3?alt=media&token=9047e189-6c30-450b-a644-31f3be6e2f27`
+        },
+        {
+            artist: 'Anupam Roy',
+            cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT9U7FVJIJhBhcaGKuRcxca1RuOnzMxBVQc3lWC41-0h_gLqMLP3V3s-iAb4h3QXddrxY&usqp=CAU',
+            musicName: 'Ekbar Bol',
+            musicPath: `https://firebasestorage.googleapis.com/v0/b/music-dad13.appspot.com/o/Anupam%20Roy%20-%20Ekbar%20Bol%20From%20Baishe%20Srabon.mp3?alt=media&token=55d9058b-9563-4919-a641-185b3f2ada00`
+        },
+        {
+            artist: 'Anupam Roy',
+            cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT9U7FVJIJhBhcaGKuRcxca1RuOnzMxBVQc3lWC41-0h_gLqMLP3V3s-iAb4h3QXddrxY&usqp=CAU',
+            musicName: 'Gobhire Jao',
+            musicPath: `https://firebasestorage.googleapis.com/v0/b/music-dad13.appspot.com/o/Anupam%20Roy%20-%20Gobhire%20Jao%20From%20Baishey%20Srabon.mp3?alt=media&token=b2e079c1-3b25-4bf8-80cb-0c14286cca69`
+        },
+        {
+            artist: 'Anupam Roy',
+            cover: 'https://m.media-amazon.com/images/I/81WQJUpZ90L._SS500_.jpg',
+            musicName: 'Hridoyer Rong',
+            musicPath: `https://firebasestorage.googleapis.com/v0/b/music-dad13.appspot.com/o/Anupam%20Roy%20-%20Hridoyer%20Rong.mp3?alt=media&token=d587d4cf-6aa9-4000-b853-8fb5fc28f6fc`
+        },
+        {
+            artist: 'Anupam Roy',
+            cover: 'https://i.scdn.co/image/ab67616d0000b2733b4fead742530d4722fe5b87',
+            musicName: 'Jawl phoring 2.0',
+            musicPath: `https://firebasestorage.googleapis.com/v0/b/music-dad13.appspot.com/o/Anupam%20Roy%20-%20Jawl%20Phoring%202.0%20From%20Prem%20Tame.mp3?alt=media&token=50244e0b-a7bb-4a57-b64c-6d2cf9654662`
+        },
+        {
+            artist: 'Anupam Roy & Iman Chkraborty',
+            cover: 'https://i.scdn.co/image/ab67616d0000b27320dc1b7924792a0be72bd174',
+            musicName: 'Je Kawta Din Reprise',
+            musicPath: `https://firebasestorage.googleapis.com/v0/b/music-dad13.appspot.com/o/Anupam%20Roy%20-%20Je%20Kawta%20Din%20Reprise.mp3?alt=media&token=0a41bffe-d246-49aa-acdc-9d45bff70bdc`
+        },
+        {
+            artist: 'Anupam Roy & Shreya Ghoshal',
+            cover: 'https://i.scdn.co/image/ab67616d0000b2736e583afdca3bd18a5ff2a404',
+            musicName: 'Kolkata',
+            musicPath: `https://firebasestorage.googleapis.com/v0/b/music-dad13.appspot.com/o/Anupam%20Roy%20-%20Kolkata%20From%20Praktan.mp3?alt=media&token=ee2422b0-41e5-4d9a-941c-e8f2ea69967f`
+        },
+        {
+            artist: 'Anupam Roy & Iman Chakraborty',
+            cover: 'https://i.scdn.co/image/ab67616d0000b2736e583afdca3bd18a5ff2a404',
+            musicName: 'Tumi Jake Bhalobaso',
+            musicPath: `https://firebasestorage.googleapis.com/v0/b/music-dad13.appspot.com/o/Anupam%20Roy%20-%20Tumi%20Jake%20Bhalobaso%20Male%20Version%20From%20Praktan.mp3?alt=media&token=67f209c5-2bad-4b8d-a283-136e8be1e817`
+        },
+        {
+            artist: 'Arijit Singh & Anupam Roy',
+            cover: 'https://i.scdn.co/image/ab67616d0000b2732ce40efd9c6c7b89520e5486',
+            musicName: 'Abar Phire Ele',
+            musicPath: `https://firebasestorage.googleapis.com/v0/b/music-dad13.appspot.com/o/Arijit%20Singh%20-%20Abar%20Phire%20Ele.mp3?alt=media&token=28b5ff99-ad12-4728-b73b-aa6596d1d08f`
+        },
+        {
+            artist: 'Arijit Singh',
+            cover: 'https://i.scdn.co/image/ab67616d0000b2738347f41fed7179133011a25d',
+            musicName: 'Na Re Na',
+            musicPath: `https://firebasestorage.googleapis.com/v0/b/music-dad13.appspot.com/o/Na%20Re%20Na(MrSong.In).mp3?alt=media&token=af1eb77b-0583-42ec-9a43-622b4dbc3aad`
+        }]
+
+        const playMusic = () => {
+            music.play();
+            document.querySelector('.play-icon').classList.replace('fa-play', 'fa-pause')
+            isPlaying = true;
+            fadeInCover();
+            musicCard.classList.add('middle-weight');
+            setTimeout(() => {
+                musicCard.classList.remove('middle-weight');
+            }, 200)
+        }
+
+        const pauseMusic = () => {
+            music.pause();
+            document.querySelector('.play-icon').classList.replace('fa-pause', 'fa-play')
+            isPlaying = false;
+            fadeInCover();
+            musicCard.classList.add('middle-weight');
+            setTimeout(() => {
+                musicCard.classList.remove('middle-weight');
+            }, 200)
+        }
+
+        const nextMusic = () => {
+            selectedMusic = (selectedMusic + 1) % playList.length
+            loadMusic(playList[selectedMusic]);
+            music.duration = 0;
+            if (isPlaying) {
+                music.play()
+            }
+            musicCard.classList.add('right-weight');
+            progressBar.style.width = `0%`
+            setTimeout(() => {
+                musicCard.classList.remove('right-weight');
+            }, 200)
+        }
+
+        const prevMusic = () => {
+            selectedMusic = (selectedMusic - 1 + playList.length) % playList.length
+            loadMusic(playList[selectedMusic]);
+            if (isPlaying) {
+                music.play()
+            }
+            musicCard.classList.add('left-weight');
+            progressBar.style.width = `0%`
+            setTimeout(() => {
+                musicCard.classList.remove('left-weight');
+            }, 200)
+        }
+
+        const loadMusic = (playList) => {
+            musicArtist.textContent = playList.artist;
+            musicTitle.textContent = playList.musicName;
+            music.src = playList.musicPath;
+            musicCover.src = `${playList.cover}`;
+            backgroundImage.src = `${playList.cover}`;
+            backgroundImage.animate([{
+                opacity: 0,
+            }, {
+                opacity: 1,
+            }], {
+                duration: 400,
+            });
+            fadeInCover();
+        }
+
+        const fadeInCover = () => {
+            musicCover.classList.add('animate')
+            setTimeout(() => {
+                musicCover.classList.remove('animate')
+            }, 300)
+        }
+
+        // Update progress
+        const updateProgress = (e) => {
+            const {
+                duration,
+                currentTime
+            } = e.srcElement;
+            const progressPercent = (currentTime / duration) * 100
+            progressBar.style.width = `${progressPercent}%`
+
+            if (progressPercent == 100) {
+                setTimeout(() => {
+                    nextMusic()
+                }, 500);
+            }
+        }
+
+        // Set progress
+        function setProgress(e) {
+            const width = this.clientWidth;
+            const setPoint = e.offsetX;
+            const duration = music.duration;
+            music.currentTime = (setPoint / width) * duration;
+        }
+
+        // Set time area
+        const setMusicTime = (e) => {
+            const {
+                duration,
+                currentTime
+            } = e.srcElement;
+            calcSongTime(duration, musicDurationTime);
+            calcSongTime(currentTime, musicCurrentTime);
+        }
+
+        const calcSongTime = (time, selectTime) => {
+            time = Number(time);
+            const m = Math.floor(time % 3600 / 60);
+            const s = Math.floor(time % 3600 % 60);
+            if (m < 10) {
+                minute = "0" + m;
+            } else minute = m
+            if (s < 10) {
+                second = "0" + s;
+            } else second = s
+
+            return selectTime.textContent = `${minute}:${second}`;
+        }
+
+
+
+        next.addEventListener('click', nextMusic);
+        prev.addEventListener('click', prevMusic);
+        music.addEventListener('timeupdate', updateProgress);
+        music.addEventListener('timeupdate', setMusicTime);
+        progressZone.addEventListener('click', setProgress)
+
+        function cardAnimate(e) {
+            this.querySelectorAll('.music-card').forEach(function(boxMove) {
+                const x = -((window.innerWidth) / 3 - e.pageX) / 90
+                const y = ((window.innerHeight) / 3 - e.pageY) / 30
+                boxMove.style.transform = "rotateY(" + x + "deg) rotateX(" + y + "deg)"
+            });
+        }
+      </script>
+</body>
+</html>
